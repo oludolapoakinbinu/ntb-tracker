@@ -1,4 +1,4 @@
-# Python
+
 __pycache__/
 *.py[cod]
 *.egg-info/
@@ -9,13 +9,13 @@ build/
 venv/
 .env
 
-# Test and tooling caches
+
 .pytest_cache/
 .ruff_cache/
 .coverage
 htmlcov/
 
-# OS / editor
+
 .DS_Store
 .idea/
 .vscode/
