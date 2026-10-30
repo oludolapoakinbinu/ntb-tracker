@@ -8,3 +8,7 @@ class Auction(BaseModel):
     amount_offered: float
     amount_subscribed: float
     amount_allotted: float
+
+
+class LatestAuction(Auction):
+    cover: float

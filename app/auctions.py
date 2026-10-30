@@ -59,6 +59,24 @@ def auctions_from(rows: list[dict]) -> list[dict]:
     return auctions
 
 
+def latest_auctions(rows: list[dict]) -> list[dict]:
+    picked = []
+    for tenor in (91, 182, 364):
+        match = next(
+            (
+                row
+                for row in rows
+                if row["tenor"] == tenor and row["amount_offered"]
+            ),
+            None,
+        )
+        if match is None:
+            continue
+        cover = round(match["amount_subscribed"] / match["amount_offered"], 4)
+        picked.append({**match, "cover": cover})
+    return picked
+
+
 def fetch_auctions() -> list[dict]:
     response = httpx2.get(CBN_NTB_URL, timeout=30)
     response.raise_for_status()
